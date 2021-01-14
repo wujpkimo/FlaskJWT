@@ -25,11 +25,10 @@ def login():
     username = request.json.get('username', None) 
     password = request.json.get('password', None) 
 
+    # 請在這邊實作登入機制，先以TEST做為測試帳密
     if username != 'test' or password != 'test': 
         return jsonify({"msg": "Bad username or password"}), 401
 
-    # Use create_access_token() and create_refresh_token() to create our
-    # access and refresh tokens
     ret = {
         'access_token': create_access_token(identity=username),
         'refresh_token': create_refresh_token(identity=username)
